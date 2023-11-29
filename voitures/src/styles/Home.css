@@ -1,0 +1,128 @@
+section.hero-section {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../Images/hero-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+section.hero-section button.hero-btn {
+    background-color: transparent;
+    border: solid 3px var(--blue);
+    font-size: 1.1em;
+    color: #fefefe;
+    padding: 13px 25px;
+    transition: all 250ms ease-in-out;
+}
+
+section.hero-section span.maroc-span {
+    color: var(--blue);
+}
+
+section.hero-section button.hero-btn:hover {
+    color: #fefefe;
+    background-color: var(--blue);
+}
+
+.presentation-title {
+    position: relative;
+}
+
+h2.presentation-title::after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    background-color: var(--blue);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+}
+
+p.presentation-para {
+    font-size: 1.1em;
+}
+
+/* ########## */
+
+section.cars-section {
+    padding: 120px 0;
+}
+
+.card-description {
+    width: 100%;
+    height: 175px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-description .card-img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.card-description .card-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    filter: brightness(60%);
+    transition: transform 250ms ease-in-out;
+}
+
+.card-description .card-text {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+}
+
+.card-description .card-text h4 {
+    color: #fefefe;
+}
+
+.card-description .card-text div.card-text-info {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-description .card-text h6 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: var(--blue);
+    text-align: center;
+}
+
+.card-description:hover.card-description .card-img img {
+    transform: scale(1.1);
+}
+
+/* ##########" */ 
+
+section.about div.about-img {
+    height: 500px;
+    background-image: url(../Images/hero-image1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+div.div-btn {
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 769px) {
+    section.about div.about-img {
+        height: 100vh;
+    }
+}

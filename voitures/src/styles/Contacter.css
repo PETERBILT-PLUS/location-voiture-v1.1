@@ -1,0 +1,15 @@
+section.contact-section form input[type="submit"] {
+    transition: background-color 250ms ease-in-out;
+}
+
+section.contact-section form input[type="submit"]:hover {
+    background-color: hsl(190, 70%, 60%);
+    color: #fefefe;
+}
+
+@media screen and (min-width: 780px) {   
+    section.contact-section {
+        min-height: 100vh;
+        max-height: auto;
+    }
+}

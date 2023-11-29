@@ -1,0 +1,23 @@
+section.regist-section {
+    min-height: 100vh;
+    max-height: auto;
+}
+
+input[type="submit"] {
+    background-color: var(--blue);
+    color: #fefefe;
+    margin-top: 30px;
+}
+
+input.btn-google {
+    background-color: var(--blue);
+    color: #fefefe;
+    margin-top: 30px;
+    background-color: var(--red);
+    cursor: pointer;
+    transition: background-color 250ms ease-in-out;
+}
+
+input.btn-google:hover {
+    background-color: hsl(10, 70%, 50%);
+}

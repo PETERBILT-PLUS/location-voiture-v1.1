@@ -1,0 +1,32 @@
+div.card {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+button.modifier, button.supprimer {
+    border-radius: 5px;
+}
+
+button.modifier {
+    background-color: transparent;
+    color: var(--blue);
+    border: solid var(--blue) 1px;
+    transition: all 250ms ease-in-out;
+}
+
+button.modifier:hover {
+    background-color: var(--blue);
+    border: solid var(--blue) 1px;
+}
+
+button.supprimer {
+    background-color: transparent;
+    border: solid var(--red) 1px;
+    color: var(--red);
+    transition: all 250ms ease-in-out;
+}
+
+button.supprimer:hover {
+    background-color: var(--red);
+    border: solid var(--red) 1px;
+    color: #fefefe;
+}
