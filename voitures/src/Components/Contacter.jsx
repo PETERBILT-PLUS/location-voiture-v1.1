@@ -5,26 +5,51 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Contacter.css";
 import { useFormik } from "formik";
 import { contactSchema } from "../Configuration/Schema";
-import { useHeaderContentQuery } from "../Configuration/api";
+import { useHeaderContentQuery, useSendEmailMutation, useSendMessageWithEmailMutation } from "../Configuration/api";
+import { ToastContainer, toast } from "react-toastify";
+import { useLayoutEffect } from "react";
 
 
 function Contacter() {
-    const { data, error } = useHeaderContentQuery();
-    console.log(data?.email);
+    const { data } = useHeaderContentQuery();
+    const [sendMessageWithEmail] = useSendMessageWithEmailMutation();
     const onSubmit = async (values, actions) => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        actions.resetForm();
+        await actions.resetForm({
+            values: {
+                name: "",
+                email: "",
+                message: ""
+            }
+        });
         console.log(values);
+        const res = await sendMessageWithEmail(values);
+        console.log(res);
+        if (res.data.success) {
+            toast.success("Message Envoyer Succes");
+            return false;
+        } else {
+            toast.error("Message Pas Envoyer");
+            return false;
+        }
     }
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting } = useFormik({
         initialValues: {
             name: "",
             email: "",
             message: "",
-        }, validationSchema: contactSchema, onSubmit
+        },
+        validationSchema: contactSchema,
+        onSubmit,
     });
+
     return (
         <section className="contact-section py-4 bg-light">
+            <ToastContainer />
             <Container>
                 <div className="">
                     <h2 className="title text-center py-4">Contacter</h2>
@@ -46,13 +71,13 @@ function Contacter() {
                     </div>
                     <div className="col-12 col-md-6 py-4">
                         <Form className="d-flex flex-column gap-2" onSubmit={handleSubmit}>
-                            <Form.Control type="text" placeholder="Nom" name="name" onChange={handleChange} onBlur={handleBlur}></Form.Control>
+                            <Form.Control type="text" placeholder="Nom" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name}></Form.Control>
                             {errors.name && touched.name && <p className="text-danger fs-6 px-2">{errors.name}</p>}
-                            <Form.Control type="text" placeholder="E-mail" name="email" onChange={handleChange} onBlur={handleBlur}></Form.Control>
+                            <Form.Control type="text" placeholder="E-mail" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email}></Form.Control>
                             {errors.email && touched.email && <p className="text-danger fs-6 px-2">{errors.email}</p>}
-                            <textarea type="text" placeholder="Message" name="message" onChange={handleChange} onBlur={handleBlur} className="py-2" style={{ height: "180px", width: "100%", borderRadius: "5px", border: "solid 1px #ccc", padding: "10px 14px" }}></textarea>
+                            <textarea type="text" placeholder="Message" name="message" onChange={handleChange} onBlur={handleBlur} className="py-2" value={values.message} style={{ height: "180px", width: "100%", borderRadius: "5px", border: "solid 1px #ccc", padding: "10px 14px" }}></textarea>
                             {errors.message && touched.message && <p className="text-danger fs-6 px-2">{errors.message}</p>}
-                            <Form.Control type="submit" value="Submit" disabled={isSubmitting} />
+                            <Form.Control type="submit" className="form-submit-btn" value="Submit" disabled={isSubmitting} />
                         </Form>
                     </div>
                 </Row>

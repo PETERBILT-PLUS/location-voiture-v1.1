@@ -12,7 +12,6 @@ function AgenceDetail() {
     useEffect(() => {
         const fetchDetails = async () => {
             const res = await changeAgence({ adminKey, tel, email, description });
-            console.log(res);
             if (res.data.success) {
                 setTel(res.data.agenceDetail.tel);
                 setEmail(res.data.agenceDetail.email);

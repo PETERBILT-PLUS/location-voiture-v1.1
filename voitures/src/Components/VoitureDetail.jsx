@@ -1,7 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
-import Data from "./Data";
 import VoitureProperty from "./VoitureProperty";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,7 +14,6 @@ import { useGetCarMutation } from "../Configuration/api";
 function VoitureDetail() {
     const params = useParams();
     const [car, setCar] = useState({});
-    console.log(car.photos);
     const { pathname } = useLocation();
     const [getSingleCar] = useGetCarMutation();
     useEffect(() => {

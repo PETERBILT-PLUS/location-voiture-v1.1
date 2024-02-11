@@ -11,19 +11,23 @@ import Van from "../Images/van.jpg";
 
 function Home() {
     const { pathname } = useLocation();
+    // Scroll to top when the component mounts or pathname changes
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
-    
+
     return (
         <>
+            {/* Hero Section */}
             <section className="hero-section py-5" id="hero-section">
                 <Container>
                     <Row>
                         <Col className="col-12 col-md-7 text-light pt-2 text-center text-md-start">
                             <h1 className="py-3 display-5">Decouvrer Le <span className="maroc-span">Maroc</span></h1>
-                            <p className="lead fs-6 pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem distinctio inventore dolorum esse tempore dicta veritatis doloremque quia hic non!</p>
-                            <button className="hero-btn">Reserver</button>
+                            <p className="lead fs-6 pb-3">
+                                Découvrez les merveilles du Maroc avec notre service de location de voitures. Parcourez les routes pittoresques et explorez les joyaux cachés de ce magnifique pays. Que vous soyez à la recherche d'une aventure en montagne, d'une escapade balnéaire ou d'une immersion dans la culture riche de ses villes historiques, nous avons la voiture parfaite pour rendre votre voyage inoubliable. Réservez dès maintenant et embarquez pour une expérience exceptionnelle!
+                            </p>
+                            <Link to="/voitures"><button className="hero-btn">Reserver</button></Link>
                         </Col>
                     </Row>
                 </Container>
@@ -38,7 +42,7 @@ function Home() {
                             </div>
                             <div className="col-12 col-md-6">
                                 <h2 className="title py-3 presentation-title">Pourquoi Chey Nous</h2>
-                                <p className="lead presentation-para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi explicabo rem fugiat aut sunt suscipit voluptates accusamus ipsum in aspernatur obcaecati, ex blanditiis magnam aliquid harum accusantium animi consectetur eum numquam ullam!</p>
+                                <p className="lead presentation-para">Choisissez notre agence de location de voitures pour des voyages sans soucis. Avec notre flotte de véhicules modernes et bien entretenus, nous vous offrons confort, sécurité et liberté pour explorer le Maroc à votre rythme. Notre équipe dévouée est là pour vous fournir un service personnalisé et répondre à tous vos besoins en matière de location de voitures. Profitez de votre séjour en toute tranquillité d'esprit en optant pour la qualité et la fiabilité avec nous.</p>
                             </div>
                         </Row>
                     </div>
@@ -114,8 +118,8 @@ function Home() {
                     <div className="about-img col-12 col-md-6 d-none d-md-block"></div>
                     <div className="about-text col-12 col-md-6 mx-auto my-auto d-flex flex-column justify-content-center align-items-center py-5 my-auto mx-auto">
                         <h6 className="title text-center text-dark fs-2 py-2">Visiter Notre Agence</h6>
-                        <h6 className="title text-center text-dark fs-5 py-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error, consequuntur! Vitae delectus commodi harum explicabo.</h6>
-                        <Link className="m-auto my-2"><button className="hero-btn text-center">Plus D'infos</button></Link>
+                        <h6 className="title text-center text-dark fs-5 py-2">Découvrez notre agence de location de voitures et préparez-vous à vivre une expérience unique au Maroc. Que vous planifiez un road trip le long des côtes ensoleillées, une escapade dans le désert majestueux ou une exploration des villes historiques chargées d'histoire, notre équipe est là pour vous fournir les véhicules parfaitement adaptés à vos besoins. Réservez dès maintenant et partez à la découverte des trésors cachés de ce magnifique pays.</h6>
+                        <Link className="m-auto my-2" to="/contacter"><button className="hero-btn text-center">Plus D'infos</button></Link>
                     </div>
                 </div>
             </section>

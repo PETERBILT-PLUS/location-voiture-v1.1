@@ -5,7 +5,7 @@ function SecurePath() {
     const currentUser = useSelector((state) => state.user.user.currentUser);
     return (
         <>
-            {currentUser ? <Outlet /> : <Navigate to="/register"/>}
+            {currentUser ? <Outlet /> : <Navigate to="/login"/>}
         </>
     );
 }

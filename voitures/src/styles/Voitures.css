@@ -76,6 +76,7 @@ div.comment textarea {
     border-radius: 5px 5px 0 0;
     height: 200px;
     width: 100%;
+    border: solid 1px #69be28;
 }
 
 div.comment button {
@@ -157,4 +158,33 @@ div.thumb {
     border-radius: 50%;
     background-color: #007bff;
     top: -60%;
+}
+
+button.date-btn {
+    padding: 14px 22px;
+    background-color: transparent;
+    border: solid 2px var(--blue);
+    color: var(--blue);
+    border-radius: 5px;
+    transition: all 250ms ease-in-out;
+}
+
+button.date-btn:hover {
+    background-color: var(--blue);
+    color: #fefefe;
+}
+
+div.time-division {
+    padding: 0 60px 0 0;
+}
+
+button.enregistrer-btn {
+    color: #fefefe;
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+button.enregistrer-btn:hover {
+    background-color: var(--blueHover);
+    border-color: var(--blueHover);
 }

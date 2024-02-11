@@ -1,0 +1,15 @@
+button.waiting {
+    background-color: var(--red);
+    border: solid 1px var(--red);
+    color: #fefefe;
+    padding: 10px 13px;
+    border-radius: 7px;
+}
+
+button.accepted {
+    background-color: var(--blue);
+    border: solid 1px var(--blue);
+    color: #fefefe;
+    padding: 10px 13px;
+    border-radius: 7px;
+}

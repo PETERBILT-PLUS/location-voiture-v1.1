@@ -18,6 +18,7 @@ function ChangeListing() {
     const [formData, setFormData] = useState({
         imagesURL: [],
         carName: "",
+        carMarque: "",
         carFuel: "",
         doors: null,
         km: null,
@@ -31,8 +32,8 @@ function ChangeListing() {
             const res = await getSingleListing({ _id: params.id, adminKey });
             console.log(res);
             if (res.data?.success) {
-                const { fuel, km, name, photos, places, pricePerDay, type } = res.data.car;
-                setFormData({ carFuel: fuel, km, carName: name, imagesURL: photos, doors: places, pricePerDay, carType: type });
+                const { fuel, km, name, marque, photos, places, pricePerDay, type } = res.data.car;
+                setFormData({ carFuel: fuel, km, carMarque: marque, carName: name, imagesURL: photos, doors: places, pricePerDay, carType: type });
             } else {
                 toast.error("Error dans le serveur ou pas Autorisé");
             }
@@ -108,6 +109,7 @@ function ChangeListing() {
                     <div className="col-12 col-md-6">
                         <Form className="col-12 col-md-10" onSubmit={handleSubmit}>
                             <Form.Control value={formData.carName} className="my-2" type="text" onChange={handleChange} name="carName" placeholder="Nom de voiture" />
+                            <Form.Control value={formData.carMarque} className="my-2" type="text" onChange={handleChange} name="carMarque" placeholder="Marque de voiture" />
                             <Form.Control value={formData.carFuel} className="my-2" type="text" onChange={handleChange} name="carFuel" placeholder="type du carburant" />
                             <Form.Control value={formData.doors} className="my-2" type="number" onChange={handleChange} name="doors" placeholder="places" />
                             <Form.Control value={formData.km} className="my-2" type="number" onChange={handleChange} name="km" placeholder="kilométrage" />

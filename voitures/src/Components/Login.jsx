@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { Container, Form, Row } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useLoginMutation } from "../Configuration/api";
 import { loginUser } from "../Configuration/main";
@@ -23,9 +23,7 @@ function Login() {
             });
             if (res.data.success) {
                 actions.resetForm();
-                const userCreated = () => toast.success("Login accepté");
-                userCreated();
-                console.log(res.data);
+                toast.success("Login Succes");
                 dispatch(loginUser(res.data));
                 navigate("/");
             }
@@ -55,6 +53,7 @@ function Login() {
                             <Form.Control value={values.password} onChange={handleChange} onBlur={handleBlur} type="password" className="py-2 my-3" placeholder="password" name="password" />
                             <Form.Control type="submit" disabled={isSubmitting} className="btn-submit mt-5" />
                             <GoogleAuth />
+                            <p className="mt-4 mb-0">Vous Avez Pas De Compte? <Link to="/register">Register</Link></p>
                         </Form>
                     </Row>
                 </Container>

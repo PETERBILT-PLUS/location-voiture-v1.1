@@ -23,13 +23,11 @@ function GoogleAuth() {
                 email: email,
             });
             if (res.data.success) {
-                const userCreated = () => toast.success("Login accepté");
-                userCreated();
-                console.log(res.data);
+                toast.success("Login accepté");
                 dispatch(loginUser(res.data));
                 alert("Votre password est:\n " + res.data.password);
-                await new Promise((resolve) => setTimeout(resolve, 3500));
-                navigate("/login");
+                await new Promise((resolve) => setTimeout(resolve, 3200));
+                navigate("/");
             }
         } catch (error) {
             console.log(error);

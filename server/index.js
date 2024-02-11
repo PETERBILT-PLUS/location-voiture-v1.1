@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/", router);
-app.use("/", adminRouter)
+app.use("/admin", adminRouter)
 mongoose.connect(`mongodb://admin:${process.env.DB_PASSWORD}@ac-5ld4spd-shard-00-00.9hzjtcz.mongodb.net:27017,ac-5ld4spd-shard-00-01.9hzjtcz.mongodb.net:27017,ac-5ld4spd-shard-00-02.9hzjtcz.mongodb.net:27017/?replicaSet=atlas-mbqr45-shard-0&ssl=true&authSource=admin`)
     .then(() => console.log("database connected"))
 app.listen(3001, () => {

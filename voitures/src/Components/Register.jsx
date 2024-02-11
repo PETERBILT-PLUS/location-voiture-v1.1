@@ -1,25 +1,22 @@
 import { useFormik } from "formik";
 import { Container, Form, Row } from "react-bootstrap";
-import { resolvePath, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerSchema } from "../Configuration/Schema";
 import GoogleAuth from "./GoogleAuth";
 import { useRegisterMutation } from "../Configuration/api";
 import { ToastContainer, toast } from "react-toastify";
-import "../styles/Register.css";
-import 'react-toastify/dist/ReactToastify.css';
-import Data from "./Data";
 import { useDispatch } from "react-redux";
+import 'react-toastify/dist/ReactToastify.css';
+import "../styles/Register.css";
 
 
 
 function Register() {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [register] = useRegisterMutation();
 
 
     const onSubmit = async (values, actions) => {
-        const userCreated = () => toast.success("user created");
         try {
             const res = await register({
                 username: values.username,
@@ -29,7 +26,7 @@ function Register() {
 
             if (res.data.success) {
                 actions.resetForm();
-                userCreated();
+                toast.success("Registrement Succes");
                 await new Promise((resolve) => setTimeout(resolve, 2000));
                 navigate("/login", { relative: "path" });
             }
@@ -69,6 +66,7 @@ function Register() {
                             {errors.confirmPassword && touched.confirmPassword && <p className="text-danger fs-6 px-2">{errors.confirmPassword}</p>}
                             <Form.Control type="submit" disabled={isSubmitting} className="btn-submit" />
                             <GoogleAuth />
+                            <p className="mt-4 mb-0">Vous Avez Déja Un Compte? <Link to="/login">Login</Link></p>
                         </Form>
                     </Row>
                 </Container>

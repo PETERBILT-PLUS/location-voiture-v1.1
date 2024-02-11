@@ -16,6 +16,11 @@ import VerifyAdmin from "./Components/VerifyAdmin";
 import Listing from "./Components/Listing";
 import AgenceDetail from "./Components/AgenceDetail";
 import ChangeListing from "./Components/ChangeListing";
+import VoitureReservations from "./Components/VoitureReservations";
+import DislikeCars from "./Components/DislikeCars.jsx"
+import Reservations from "./Components/Reservations";
+import Abonnes from "./Components/Abonnes";
+import AdminMessages from "./Components/AdminMessages";
 
 
 
@@ -33,11 +38,16 @@ function App() {
         <Route path="listing" element={<Listing />}></Route>
         <Route path="agence-detail" element={<AgenceDetail />}></Route>
         <Route path="change-listing/:id" element={<ChangeListing />}></Route>
+        <Route path="dislike-cars" element={<DislikeCars />}></Route>
+        <Route path="reservations" element={<Reservations />}></Route>
+        <Route path="abonnes" element={<Abonnes />}></Route>
+        <Route path="messages" element={<AdminMessages />}></Route>
       </Route>
-    
-      <Route element={<SecurePath />}>
+
+      <Route path="/" element={<SecurePath />}>
         <Route path="compte" element={<Account />}></Route>
         <Route path="voitures/:car" element={<VoitureDetail />}></Route>
+        <Route path="reservations" element={<VoitureReservations />}></Route>
       </Route>
     </Route>
   ));

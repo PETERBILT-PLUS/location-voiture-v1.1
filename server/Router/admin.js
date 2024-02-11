@@ -1,11 +1,16 @@
 import express from "express";
-import { adminListing, agenceDetail, changeListing, createListings, deleteItem, getSingleListing } from "../controller/admin.js";
+import { acceptReservation, adminListing, adminReservations, agenceDetail, changeListing, createListings, deleteItem, dislikeTheCar, forAdminMessages, getAbonnes, getSingleListing } from "../controller/admin.js";
 
 export const adminRouter = express.Router();
 
-adminRouter.post("/admin/create-listing", createListings);
-adminRouter.post("/admin/listing", adminListing);
-adminRouter.post("/admin/agence-detail", agenceDetail);
-adminRouter.post("/admin/get-single-listing", getSingleListing)
-adminRouter.post("/admin/change-listing", changeListing);
-adminRouter.delete("/admin/deleteItem", deleteItem);
+adminRouter.post("/create-listing", createListings);
+adminRouter.post("/listing", adminListing);
+adminRouter.post("/agence-detail", agenceDetail);
+adminRouter.post("/get-single-listing", getSingleListing)
+adminRouter.post("/change-listing", changeListing);
+adminRouter.delete("/deleteItem", deleteItem);
+adminRouter.post("/dislike-cars", dislikeTheCar);
+adminRouter.post("/reservations", adminReservations);
+adminRouter.post("/accept-reservation", acceptReservation);
+adminRouter.post("/get-abonnes", getAbonnes);
+adminRouter.post("/for-admin-messages", forAdminMessages);

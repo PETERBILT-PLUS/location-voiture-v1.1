@@ -33,6 +33,23 @@ export const ProductShema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    accepted: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    timeStart: {
+        type: String,
+        required: false,
+    },
+    timeEnd: {
+        type: String,
+        required: false,
+    },
+    totalDays: {
+        type: Number,
+        required: false,
+    },
 }, {
     timestamps: true,
 });

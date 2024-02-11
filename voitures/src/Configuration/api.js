@@ -61,6 +61,42 @@ export const api = createApi({
                 body: body,
             }),
         }),
+        getCarReservation: builder.mutation({
+            query: (body) => ({
+                url: "/car-reservation",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        signaler: builder.mutation({
+            query: (body) => ({
+                url: "/signaler-car",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        cancelReservation: builder.mutation({
+            query: (body) => ({
+                url: "/cancel-reservation",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        sendEmail: builder.mutation({
+            query: (body) => ({
+                url: "/send-email",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        sendMessageWithEmail: builder.mutation({
+            query:(body) => ({
+                url: "/send-email-with-message",
+                method: "POST",
+                body: body,
+            }),
+        }),
+
         // for the admin
 
         admin: builder.mutation({
@@ -118,6 +154,41 @@ export const api = createApi({
         headerContent: builder.query({
             query: () => "/header-content",
         }),
+        dislikedCars: builder.mutation({
+            query: (body) => ({
+                url: "/admin/dislike-cars",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        reservations: builder.mutation({
+            query: (body) => ({
+                url: "/admin/reservations",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        acceptReservation: builder.mutation({
+            query: (body) => ({
+                url: "/admin/accept-reservation",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        getAbonnes: builder.mutation({
+            query: (body) => ({
+                url: "/admin/get-abonnes",
+                method: "POST",
+                body: body,
+            }),
+        }),
+        getForAdminMessage: builder.mutation({
+            query: (body) => ({
+                url: "/admin/for-admin-messages",
+                method: "POST",
+                body: body,
+            }),
+        }),
     }),
 });
 
@@ -129,6 +200,11 @@ export const {
     useAddCarMutation,
     useGetCarsQuery,
     useGetCarMutation,
+    useGetCarReservationMutation,
+    useSignalerMutation,
+    useSendEmailMutation,
+    useCancelReservationMutation,
+    useSendMessageWithEmailMutation,
     useAdminMutation,
     useListingsMutation,
     useGetListingsMutation,
@@ -136,5 +212,10 @@ export const {
     useChangeAgenceDetailMutation,
     useChangeListingMutation,
     useGetSingleListingMutation,
-    useHeaderContentQuery, 
+    useHeaderContentQuery,
+    useDislikedCarsMutation,
+    useReservationsMutation,
+    useAcceptReservationMutation,
+    useGetAbonnesMutation,
+    useGetForAdminMessageMutation,
 } = api;

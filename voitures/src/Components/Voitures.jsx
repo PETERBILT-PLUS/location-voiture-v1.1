@@ -1,27 +1,28 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
 import { Container, Form as BootstrapForm, Row } from "react-bootstrap";
-import CardItem from "./CardItem";
-import { useLocation, useSearchParams } from "react-router-dom";
-import ReactSlider from "react-slider";
-import "../styles/Voitures.css";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { useGetCarsQuery } from "../Configuration/api";
+import CardItem from "./CardItem";
+import "../styles/Voitures.css";
 
 
 function Voitures() {
     const { pathname } = useLocation();
     const [params, setParams] = useSearchParams();
-    const { data } = useGetCarsQuery();
+    const myParams = useParams();
+    const [cars, setCars] = useState([]);
+    const { data, isLoading } = useGetCarsQuery();
 
-    let [cars, setCars] = useState([]);
+
 
     useEffect(() => {
         setCars(data?.data);
-        console.log(cars);
-    }, [data?.data])
-    console.log(data?.data);
+    }, [data?.data]);
+
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
+
 
     const [option1, setOption1] = useState("");
     const [option2, setOption2] = useState("");
@@ -85,6 +86,7 @@ function Voitures() {
         setCars(newList);
         setParams(currentParams)
     }
+
     const refeltring = async (car) => {
         const urlParams = new URLSearchParams(window.location.search);
 
@@ -110,6 +112,7 @@ function Voitures() {
             document.getElementById("car-type").click();
         }
     }
+
     const clearCarProperty = async (property, groupe) => {
         const currentParams = Object.fromEntries(params);
         const current = params.toString();
@@ -131,6 +134,7 @@ function Voitures() {
                 break;
         }
     }
+
 
     return (
         <>
@@ -232,7 +236,7 @@ function Voitures() {
                                     return (
                                         <CardItem key={_id} id={_id} url={photos[0]} marque={carMarque} title={name} seats={places} fuel={fuel} distance={km} type={type} price={pricePerDay} />
                                     );
-                                })) : <h3 className="w-100 text-center pt-3">pas de voiture avec ces caracteristiques</h3>}
+                                })) : !isLoading && <h3 className="w-100 text-center pt-3">pas de voiture avec ces caracteristiques</h3>}
                             </div>
                         </div>
                     </Row>
