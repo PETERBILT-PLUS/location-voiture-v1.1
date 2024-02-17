@@ -21,9 +21,9 @@ function Contacter() {
                 message: ""
             }
         });
-        console.log(values);
+        
         const res = await sendMessageWithEmail(values);
-        console.log(res);
+        
         if (res.data.success) {
             toast.success("Message Envoyer Succes");
             return false;
@@ -34,6 +34,7 @@ function Contacter() {
     }
 
     useLayoutEffect(() => {
+        document.title = "Contacter";
         window.scrollTo(0, 0);
     }, []);
 

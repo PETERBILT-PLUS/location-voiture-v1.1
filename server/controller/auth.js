@@ -6,6 +6,8 @@ import Products from "../models/Products.js";
 import DislikeCars from "../models/DislikeCars.js";
 import EmailSchema from "../models/Emails.js";
 import Message from "../models/Messages.js";
+import { differenceInDays } from "date-fns";
+
 
 // Get header content from AgenceDetail
 export const headerContent = async (req, res) => {
@@ -162,7 +164,7 @@ export const addCar = async (req, res) => {
         if (!user) return res.status(404).json({ success: false, message: "utilisateur pas trouvée" });
         car.timeStart = pickUpDate;
         car.timeEnd = endWorkDate;
-        car.totalDays = timeTotal;
+        car.totalDays = differenceInDays(pickUpDate, endWorkDate);
 
         const findIfCarIsAdded = user.cars.find((elem) => elem._id == car_id);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Container, Table } from 'react-bootstrap';
 import { useGetForAdminMessageMutation } from '../Configuration/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +8,10 @@ function AdminMessages() {
     const [messages, setMessages] = useState([]);
     const [getMessagesServer] = useGetForAdminMessageMutation();
     const adminKey = localStorage.getItem("adminKey") || null;
+
+    useLayoutEffect(() => {
+        document.title = "Clients Messages";
+    }, []);
 
     useEffect(() => {
         const getMessages = async () => {

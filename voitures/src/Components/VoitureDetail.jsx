@@ -23,6 +23,7 @@ function VoitureDetail() {
             console.log(res.data);
             if (res.data?.success) {
                 setCar(res.data?.car);
+                document.title = res?.data?.car?.name;
             } else {
                 alert("Desolé une error ressayer");
             }
@@ -33,11 +34,8 @@ function VoitureDetail() {
     const [state, setState] = useState("");
     const [slide, setSlide] = useState(null);
 
-
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
-    });
-    useLayoutEffect(() => {
         let width = document.documentElement.clientWidth;
         if (width < 768) {
             setSlide(1);

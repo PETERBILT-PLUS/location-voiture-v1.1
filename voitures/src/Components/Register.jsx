@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
 import "../styles/Register.css";
+import { useLayoutEffect } from "react";
 
 
 
@@ -15,6 +16,9 @@ function Register() {
     const navigate = useNavigate();
     const [register] = useRegisterMutation();
 
+    useLayoutEffect(() => {
+        document.title = "Register";
+    }, []);
 
     const onSubmit = async (values, actions) => {
         try {

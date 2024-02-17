@@ -20,6 +20,7 @@ function Voitures() {
     }, [data?.data]);
 
     useLayoutEffect(() => {
+        document.title = "Voitures";
         window.scrollTo(0, 0);
     }, [pathname]);
 

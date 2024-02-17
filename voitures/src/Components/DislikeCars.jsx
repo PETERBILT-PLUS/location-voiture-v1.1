@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Container, Table } from 'react-bootstrap'
 import { ToastContainer, toast } from 'react-toastify';
 import { useDislikedCarsMutation } from '../Configuration/api';
@@ -7,6 +7,11 @@ function DislikeCars() {
     const [dislikeCars, setDislikeCars] = useState([]);
     const [dislike] = useDislikedCarsMutation();
     const adminKey = localStorage.getItem("adminKey") || null;
+
+    useLayoutEffect(() => {
+        document.title = "Voitures Signalés";
+    }, []);
+
     useEffect(() => {
         const getDislikedCars = async () => {
             const res = await dislike({ adminKey });

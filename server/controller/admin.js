@@ -100,8 +100,7 @@ export const agenceDetail = async (req, res) => {
         );
 
         // Checking admin key
-        if (KEY !== adminKey) 
-            return res.status(403).json({ success: false, message: "Not authorized" });
+        if (KEY !== adminKey) return res.status(403).json({ success: false, message: "Not authorized" });
 
         // Sending response
         if (agenceDetail) 

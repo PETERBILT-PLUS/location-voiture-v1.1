@@ -21,6 +21,7 @@ import DislikeCars from "./Components/DislikeCars.jsx"
 import Reservations from "./Components/Reservations";
 import Abonnes from "./Components/Abonnes";
 import AdminMessages from "./Components/AdminMessages";
+import Page404 from "./Components/Page404";
 
 
 
@@ -32,6 +33,7 @@ function App() {
       <Route path="contacter" element={<Contacter />}></Route>
       <Route path="register" element={<Register />}></Route>
       <Route path="login" element={<Login />}></Route>
+      <Route path="*" element={<Page404 />}></Route>
 
       <Route path="/admin" element={<VerifyAdmin />}>
         <Route path="create-listing" element={<CreateListing />}></Route>

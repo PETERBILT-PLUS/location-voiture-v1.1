@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useLayoutEffect } from "react";
 import { Container, Form, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -12,7 +13,11 @@ function Account() {
     const username = useSelector((state) => state.user.user?.currentUser.username);
     const email = useSelector((state) => state.user.user?.currentUser.email);
     const _id = useSelector((state) => state.user.user?.currentUser._id);
-    
+
+    useLayoutEffect(() => {
+        document.title = "Compte";
+    }, []);
+
     const onSubmit = async (values, action) => {
         const userUpdate = () => toast.success("Update");
         try {

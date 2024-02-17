@@ -83,7 +83,7 @@ function Header() {
             <div className="second-container">
                 <Container>
                     <Navbar expand="lg" variant="dark">
-                        <Navbar.Brand href="#" className="text-light fs-3">MyAuto</Navbar.Brand>
+                        <NavLink to="/" style={{ textDecoration: "none" }}><Navbar.Brand href="" className="text-light fs-3">MyAuto</Navbar.Brand></NavLink>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">

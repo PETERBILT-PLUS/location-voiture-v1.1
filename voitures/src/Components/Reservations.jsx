@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Container, Table } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { useAcceptReservationMutation, useReservationsMutation } from '../Configuration/api.js';
@@ -13,6 +13,11 @@ function Reservations() {
     const [startPage, setStartPage] = useState(false);
     const [state, setState] = useState(false);
     const [accept] = useAcceptReservationMutation();
+
+    useLayoutEffect(() => {
+        document.title = "Réservations";
+    }, []);
+
     useEffect(() => {
         const getReservations = async () => {
             try {

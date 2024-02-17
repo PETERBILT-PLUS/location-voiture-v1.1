@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { app } from "../Configuration/firebase";
@@ -9,9 +9,9 @@ import { useListingsMutation } from "../Configuration/api";
 function CreateListing() {
     const [files, setFiles] = useState([]);
     const [uploadByte, setUploadByte] = useState(0);
-    console.log(uploadByte);
     const [imageLoading, setImageLoading] = useState(false);
     const adminKey = localStorage.getItem("adminKey") || "";
+    const [listing] = useListingsMutation();
     const [formData, setFormData] = useState({
         imagesURL: [],
         carName: "",
@@ -23,8 +23,11 @@ function CreateListing() {
         pricePerDay: 0,
         adminKey: adminKey,
     });
-    console.log(formData);
-    const [listing] = useListingsMutation();
+
+    useLayoutEffect(() => {
+        document.title = "Crée Une Listing";
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

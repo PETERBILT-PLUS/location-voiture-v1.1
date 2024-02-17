@@ -13,6 +13,7 @@ function Home() {
     const { pathname } = useLocation();
     // Scroll to top when the component mounts or pathname changes
     useLayoutEffect(() => {
+        document.title = "Acceuil";
         window.scrollTo(0, 0);
     }, [pathname]);
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { app } from "../Configuration/firebase";
@@ -26,7 +26,11 @@ function ChangeListing() {
         pricePerDay: 0,
         adminKey: adminKey,
     });
-    console.log(formData);
+    
+    useLayoutEffect(() => {
+        document.title = "Changer une Listing";
+    }, []);
+
     useEffect(() => {
         const getCar = async () => {
             const res = await getSingleListing({ _id: params.id, adminKey });

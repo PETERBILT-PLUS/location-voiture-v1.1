@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Container, Form, Row } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
 import { useChangeAgenceDetailMutation } from "../Configuration/api";
@@ -9,11 +9,16 @@ function AgenceDetail() {
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
     const [changeAgence] = useChangeAgenceDetailMutation();
+
+    useLayoutEffect(() => {
+        document.title = "Agence Détail";
+    }, []);
+
     useEffect(() => {
         const fetchDetails = async () => {
             const res = await changeAgence({ adminKey, tel, email, description });
-            if (res.data.success) {
-                setTel(res.data.agenceDetail.tel);
+            if (res?.data?.success) {
+                setTel(res?.data?.agenceDetail?.tel);
                 setEmail(res.data.agenceDetail.email);
                 setDescription(res.data.agenceDetail.description);
             } else {

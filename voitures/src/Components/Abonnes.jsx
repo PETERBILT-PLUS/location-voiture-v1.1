@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Container, Table } from 'react-bootstrap';
 import { useGetAbonnesMutation } from '../Configuration/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +8,10 @@ function Abonnes() {
     const [abonnes] = useGetAbonnesMutation();
     const [myAbonnes, setMyAbonnes] = useState([]);
     const adminKey = localStorage.getItem("adminKey") || null;
+
+    useLayoutEffect(() => {
+        document.title = "Mes Abonnés";
+    }, []);
 
     useEffect(() => {
         try {

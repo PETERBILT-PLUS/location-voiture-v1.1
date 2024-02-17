@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useCancelReservationMutation, useGetCarReservationMutation } from "../Configuration/api";
 import "../styles/voitureReservation.css";
-
+import { useLayoutEffect } from "react";
 
 function VoitureReservations() {
     const [reservations] = useGetCarReservationMutation();
@@ -12,6 +12,10 @@ function VoitureReservations() {
     const [cars, setCars] = useState([]);
     const { _id: user_id } = useSelector((state) => state.user.user.currentUser) || null;
     const [startPage, setStartPage] = useState(false);
+
+    useLayoutEffect(() => {
+        document.title = "Mes Réservations";
+    }, []);
 
     useEffect(() => {
         const getReservation = async () => {

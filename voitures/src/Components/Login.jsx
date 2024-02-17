@@ -9,11 +9,16 @@ import { loginUser } from "../Configuration/main";
 import { loginSchema } from "../Configuration/Schema";
 import "../styles/Register.css";
 import GoogleAuth from "./GoogleAuth";
+import { useLayoutEffect } from "react";
 
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [loginin] = useLoginMutation();
+
+    useLayoutEffect(() => {
+        document.title = "Login";
+    }, []);
 
     const onSubmit = async (values, actions) => {
         try {
